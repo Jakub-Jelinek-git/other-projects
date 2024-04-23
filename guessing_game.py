@@ -1,7 +1,7 @@
 import random
 import sys
 
-def guess_number():
+def main_code():
     number = random.randint(1, 100)
     attempts = 0
     while True:
@@ -18,9 +18,9 @@ def guess_number():
             print(f"Congratulations! You guessed the number in {attempts} attempts.")
             break
         elif guess < number:
-            print("Try higher.")
+            print(f'number is too low')
         else:
-            print("Try lower.")
+            print(f'number is too high')
     return attempts
 
 def player_info():
@@ -42,7 +42,6 @@ def player_info():
         for player, attempts in enumerate(round_attempts):
             if attempts == max_attempts:
                 scores[player] += 1
-
     print("Final Scores:")
     for player, score in enumerate(scores):
         print(f"Player {player + 1}: {score} points")
