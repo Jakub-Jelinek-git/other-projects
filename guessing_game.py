@@ -15,7 +15,7 @@ def guess_number():
             continue
         attempts += 1
         if guess == number:
-            print("Congratulations! You guessed the number.")
+            print(f"Congratulations! You guessed the number in {attempts} attempts.")
             break
         elif guess < number:
             print("Try higher.")
@@ -28,14 +28,16 @@ def player_info():
     num_rounds = int(input("Enter the number of rounds: "))
 
     scores = [0] * num_players
+    total_attempts = [0] * num_players
 
     for round_num in range(1, num_rounds + 1):
         print(f"Round {round_num}:")
-        round_attempts = []
+        round_attempts = [0] * num_players
         for player in range(num_players):
             print(f"Player {player + 1}:")
             attempts = guess_number()
-            round_attempts.append(attempts)
+            round_attempts[player] = attempts
+            total_attempts[player] += attempts
         max_attempts = max(round_attempts)
         for player, attempts in enumerate(round_attempts):
             if attempts == max_attempts:
@@ -44,6 +46,10 @@ def player_info():
     print("Final Scores:")
     for player, score in enumerate(scores):
         print(f"Player {player + 1}: {score} points")
+    
+    print("\nTotal Attempts:")
+    for player, attempts in enumerate(total_attempts):
+        print(f"Player {player + 1}: {attempts} attempts")
 
 while True:
     print("Welcome to the guessing game!")
