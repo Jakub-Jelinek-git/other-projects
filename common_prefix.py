@@ -3,7 +3,9 @@ prefix = strs[0]
 def loop(strs):
     for item in strs:
         if prefix in item[1:]:
+            print("sexy")
             continue
+            
         else:
             return False
     print("......")
